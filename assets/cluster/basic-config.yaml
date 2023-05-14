@@ -1,0 +1,55 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: <ENV_NAME>
+  region: us-east-1
+  version: "1.26"
+  tags:
+    env: <ENV_NAME>
+
+privateCluster:
+  enabled: true
+
+iam:
+  withOIDC: true
+
+vpc:
+  id: <VPC_ID>
+  subnets:
+    private:
+      us-east-1a:
+        id: <SUBNET_ID>
+      us-east-1b:
+        id: <SUBNET_ID>
+      us-east-1c:
+        id: <SUBNET_ID>
+
+
+# Opcional, en caso de crear una nueva VPC
+# availabilityZones:
+# - us-east-1a
+# - us-east-1b
+# - us-east-1c
+
+
+managedNodeGroups:
+- name: general
+  maxPodsPerNode: 110
+
+  privateNetworking: true
+
+  instanceType: t3a.medium # t3a.large |
+  spot: true
+
+  minSize: 1
+  desiredCapacity: 1
+  maxSize: 4
+
+  volumeSize: 20
+  ssh:
+    allow: true
+
+# ARN of the KMS key
+secretsEncryption:
+  keyARN: # arn:aws:kms:us-east-1:008576935838:key/f684e651-e8bd-4a9a-be52-2c4b231c921f
