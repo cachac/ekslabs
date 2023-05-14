@@ -47,8 +47,6 @@ managedNodeGroups:
   maxSize: 4
 
   volumeSize: 20
-  ssh:
-    allow: true
 
 # ARN of the KMS key
 secretsEncryption:
