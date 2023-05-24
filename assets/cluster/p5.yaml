@@ -8,19 +8,34 @@ metadata:
   tags:
     env: practica5
 
-privateCluster:
-  enabled: true
+# privateCluster:
+#   enabled: true
 
 iam:
   withOIDC: true
 
-availabilityZones:
-- us-east-1a
-- us-east-1b
-- us-east-1c
+vpc:
+  id: <VPC_ID>
+  subnets:
+    private:
+      us-east-1a:
+        id: <SUBNET_ID>
+      us-east-1b:
+        id: <SUBNET_ID>
+      us-east-1c:
+        id: <SUBNET_ID>
 
 managedNodeGroups:
-  - name: general
+  - name: large
+    privateNetworking: true
+    instanceType: t3a.large
+    spot: true
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 1
+    volumeSize: 20
+
+  - name: medium
     privateNetworking: true
     instanceType: t3a.medium
     spot: true

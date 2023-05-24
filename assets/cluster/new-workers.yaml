@@ -1,0 +1,18 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: dev
+  region: us-east-1
+
+managedNodeGroups:
+  - name: new-workers
+    labels:
+      role: new-workers
+    instanceType: t3a.small
+    spot: true
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 3
+    volumeSize: 20
+    privateNetworking: true

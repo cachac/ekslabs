@@ -8,8 +8,8 @@ metadata:
   tags:
     env: <ENV_NAME>
 
-privateCluster:
-   enabled: true
+# privateCluster:
+#    enabled: true
 
 iam:
   withOIDC: true
