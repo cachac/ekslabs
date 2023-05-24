@@ -13,11 +13,11 @@ ok Opciones de computo: spot - fargate - instance type (spot) 20m = 6:20
 
 lab 2 instalación de fargate 45min = 7.05pm
 03 practica: instalación desde cero cluster eks 50h = 8:30pm
-04 ingress 1h
-loadbalancer
+actualización de cluster y nodos
+modificación de nodos
 
 # dia 3
-lab 4, habilitar lb
+lab , habilitar lb 
 05 practica, lb y conectar con ingress
 storage
 autoscaling
@@ -38,15 +38,9 @@ encryption
 
 
 
-rbac
-> revisar permisos del ususario admin
-> Si es necesario Eliminar la restricción de cuarentena por llave ssh
-
-# 3. Crear nuevo usuario AWS
 ```
-NEW_USER=<USER_NAME>
-aws iam create-user --user-name $NEW_USER
-aws iam create-access-key --user-name $NEW_USER | tee /tmp/create_output.json
-aws iam add-user-to-group --group-name EKS  --user-name $NEW_USER
 
-```
+
+
+
+

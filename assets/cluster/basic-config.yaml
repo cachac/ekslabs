@@ -12,8 +12,8 @@ privateCluster:
   enabled: true
 
 iam:
-  withOIDC: true
-
+  withOIDC: true # OPEN ID AUTH = sso
+  # serviceRoleARN: arn:aws:iam::627563248143:role/LabRole
 vpc:
   id: <VPC_ID>
   subnets:
@@ -25,28 +25,26 @@ vpc:
       us-east-1c:
         id: <SUBNET_ID>
 
-
 # Opcional, en caso de crear una nueva VPC
 # availabilityZones:
 # - us-east-1a
 # - us-east-1b
 # - us-east-1c
 
-
 managedNodeGroups:
-- name: general
-  maxPodsPerNode: 110
+  - name: general
+    maxPodsPerNode: 110
 
-  privateNetworking: true
+    privateNetworking: true
 
-  instanceType: t3a.medium # t3a.large |
-  spot: true
+    instanceType: t3a.medium # t3a.large |
+    spot: true
 
-  minSize: 1
-  desiredCapacity: 1
-  maxSize: 4
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 4
 
-  volumeSize: 20
+    volumeSize: 20
 
 # ARN of the KMS key
 secretsEncryption:

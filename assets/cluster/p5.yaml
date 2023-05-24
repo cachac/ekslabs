@@ -1,0 +1,30 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: practica5
+  region: us-east-1
+  version: "1.24"
+  tags:
+    env: practica5
+
+privateCluster:
+  enabled: true
+
+iam:
+  withOIDC: true
+
+availabilityZones:
+- us-east-1a
+- us-east-1b
+- us-east-1c
+
+managedNodeGroups:
+  - name: general
+    privateNetworking: true
+    instanceType: t3a.medium
+    spot: true
+    minSize: 1
+    desiredCapacity: 1
+    maxSize: 3
+    volumeSize: 20

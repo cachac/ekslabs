@@ -1,0 +1,41 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: <ENV_NAME>
+  region: us-east-1
+  version: "1.26"
+  tags:
+    env: <ENV_NAME>
+
+privateCluster:
+   enabled: true
+
+iam:
+  withOIDC: true
+
+vpc:
+  id: <VPC_ID>
+  subnets:
+    private:
+      us-east-1a:
+        id: <SUBNET_ID>
+      us-east-1b:
+        id: <SUBNET_ID>
+      us-east-1c:
+        id: <SUBNET_ID>
+
+fargateProfiles:
+  - name: system
+    selectors:
+      - namespace: default
+      - namespace: kube-system
+      - namespace: practica
+
+  # selectors example
+  # - name: fp-dev
+  #   selectors:
+  #     - namespace: dev
+  #       labels:
+  #         env: dev
+  #         checks: passed
