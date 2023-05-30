@@ -2,40 +2,37 @@
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 metadata:
-  name: practica5
+  name: loadbalancer
   region: us-east-2
-  version: "1.24"
+  version: "1.26"
   tags:
-    env: practica5
+    env: loadbalancer
 
 # privateCluster:
 #   enabled: true
 
 iam:
   withOIDC: true
+  serviceAccounts:
+    - metadata:
+        name: aws-load-balancer
+        namespace: kube-system
+      wellKnownPolicies:
+        awsLoadBalancerController: true
 
 vpc:
-  id: vpc-0489230161cb74bd3
+  id: <VPC-ID>
   subnets:
     private:
       us-east-1a:
-        id: subnet-022792d4958653f8b
+        id: <SUBNET-ID>
       us-east-1b:
-        id: subnet-034147412ef94462a
+        id: <SUBNET-ID>
       us-east-1c:
-        id: subnet-07828c9f7252927de
+        id: <SUBNET-ID>
 
 managedNodeGroups:
-  - name: large
-    privateNetworking: true
-    instanceType: t3a.large
-    spot: true
-    minSize: 1
-    desiredCapacity: 1
-    maxSize: 1
-    volumeSize: 20
-
-  - name: medium
+  - name: default
     privateNetworking: true
     instanceType: t3a.medium
     spot: true
