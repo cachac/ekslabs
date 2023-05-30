@@ -17,28 +17,24 @@ actualización de cluster y nodos
 modificación de nodos
 
 # dia 3
-lab , habilitar lb 
+lab , habilitar lb
 05 practica, lb y conectar con ingress
 storage
-autoscaling
+
+
 
 # dia 4
-cloud watch
-ops view
-escalar manualmente el cluster
 cluster autoscaling
-hpa
-
 ECR
 secrets
+cloud watch
+hpa
 
 guard duty
 encryption
 
 
 
-
-```
 
 
 
