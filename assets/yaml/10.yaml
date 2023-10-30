@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: php-apache
+  name: php-apache
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-apache
+  strategy:
+    rollingUpdate:
+      maxSurge: 75%
+      maxUnavailable: 50%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: php-apache
+    spec:
+      containers:
+        - image: us.gcr.io/k8s-artifacts-prod/hpa-example
+          imagePullPolicy: Always
+          name: hpa-example
+          resources:
+            limits:
+              memory: 30Mi
+              cpu: 300m
+            requests:
+              memory: 15Mi
+              cpu: 2m
+
+      terminationGracePeriodSeconds: 10
