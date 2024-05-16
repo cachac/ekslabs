@@ -4,7 +4,7 @@ kind: ClusterConfig
 metadata:
   name: <ENV_NAME>
   region: us-east-1
-  version: "1.26"
+  version: "1.29"
   tags:
     env: <ENV_NAME>
 
