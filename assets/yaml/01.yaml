@@ -30,5 +30,5 @@ spec:
 
 # kubectl create namespace practica
 # kubectl get pods -n practica
-# k expose -n practica deployment deploy-practica-1 --name practica --port 8080
+# k expose -n practica deployment deploy-practica-1 --name svc-practica --port 8080
 # k exec test2 -- curl svc-practica.practica.svc.cluster.local:8080
